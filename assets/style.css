@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600&display=swap');
+
+:root {
+    --bg-gradient-start: #F5C9A6;
+    --bg-gradient-mid: #EBC9D4;
+    --bg-gradient-end: #C9D3EE;
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-bg-strong: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --text-primary: #33334D;
+    --text-secondary: #6B6B85;
+    --accent: #5B54E8;
+    --shadow: rgba(80, 60, 120, 0.15);
+}
+
+/* App Background & Typography */
+.stApp {
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 40%, var(--bg-gradient-end) 100%) !important;
+    background-attachment: fixed !important;
+    font-family: 'Inter', sans-serif !important;
+    color: var(--text-primary) !important;
+}
+
+/* Fix Streamlit's default background overlapping */
+.stApp > header { background: transparent !important; }
+.stApp [data-testid="stAppViewContainer"] { background: transparent !important; }
+.stApp [data-testid="stHeader"] { background: transparent !important; }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif !important;
+    color: var(--text-primary) !important;
+}
+h1 {
+    font-size: 32px !important;
+    font-weight: 600 !important;
+    text-align: center;
+}
+
+/* Container Width & Spacing */
+.block-container {
+    max-width: 720px !important;
+    padding-top: 3rem !important;
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+/* Glass Cards */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: rgba(255,255,255,0.35) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1.5px solid rgba(255,255,255,0.7) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 32px rgba(80,60,120,0.18) !important;
+    padding: 16px !important; 
+    margin-bottom: 24px !important;
+}
+
+div[data-testid="stVerticalBlockBorderWrapper"] > div {
+    padding: 16px !important;
+}
+
+@media (max-width: 768px) {
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        padding: 4px !important;
+    }
+    div[data-testid="stVerticalBlockBorderWrapper"] > div {
+        padding: 16px !important;
+    }
+}
+
+/* Text Areas */
+/* Remove Streamlit's default BaseWeb wrapper styles (gray fill and border are on nested divs) */
+div[data-testid="stTextArea"] [data-baseweb="textarea"] > div,
+div[data-testid="stTextArea"] [data-baseweb="base-input"] > div {
+    background-color: transparent !important;
+    border: none !important;
+}
+div[data-testid="stTextArea"] [data-baseweb="textarea"],
+div[data-testid="stTextArea"] [data-baseweb="base-input"] {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* Style the actual textarea element directly */
+div[data-testid="stTextArea"] textarea {
+    background-color: rgba(255,255,255,0.5) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255,255,255,0.6) !important;
+    border-radius: 12px !important;
+    color: #33334D !important;
+    padding: 12px !important;
+    outline: none !important;
+}
+div[data-testid="stTextArea"] textarea:focus {
+    border-color: rgba(91,84,232,0.6) !important;
+    box-shadow: 0 0 0 3px rgba(91,84,232,0.15) !important;
+    background-color: rgba(255,255,255,0.55) !important;
+    outline: none !important;
+}
+div[data-testid="stTextArea"] label {
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+div[data-testid="stTextArea"] textarea::placeholder {
+    color: rgba(107,107,133,0.7) !important;
+}
+
+/* Primary Button (Generate) */
+button[kind="primary"] {
+    background: linear-gradient(90deg, #5B54E8 0%, #E8896A 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 9999px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+button[kind="primary"]:hover {
+    transform: scale(1.02) !important;
+    box-shadow: 0 8px 16px rgba(91, 84, 232, 0.3) !important;
+}
+button[kind="primary"]:focus {
+    outline: 2px solid var(--accent) !important;
+}
+
+/* Secondary Button (Regenerate) */
+button[kind="secondary"] {
+    background: var(--glass-bg-strong) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 9999px !important;
+    transition: all 0.2s ease !important;
+    font-weight: 500 !important;
+}
+button[kind="secondary"]:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+/* Pill Chips for Radio Buttons */
+.stRadio > div[role="radiogroup"] {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+}
+.stRadio [role="radiogroup"] label {
+    background: rgba(255,255,255,0.45) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255,255,255,0.5) !important;
+    border-radius: 9999px !important;
+    padding: 8px 16px !important;
+    color: #33334D !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    transition: all 0.2s ease !important;
+}
+/* Hide Native Radio Circle */
+.stRadio [role="radiogroup"] label div[data-testid="stMarkdownContainer"] { margin-left: 0 !important; }
+.stRadio [role="radiogroup"] label div[data-testid="stRadio"] { display: none !important; }
+
+/* Selected Pill */
+.stRadio [role="radiogroup"] label[data-checked="true"] {
+    background: linear-gradient(90deg, #5B54E8 0%, #E8896A 100%) !important;
+    border-color: transparent !important;
+    box-shadow: 0 0 16px rgba(91,84,232,0.5) !important;
+    transform: scale(1.03) !important;
+}
+.stRadio [role="radiogroup"] label[data-checked="true"] p {
+    color: #FFFFFF !important;
+    font-weight: 500 !important;
+}
+
+/* Global Text */
+p, span, div {
+    color: var(--text-primary);
+}
+/* Exception for radio checked text */
+.stRadio [role="radiogroup"] label[data-checked="true"] * {
+    color: #FFFFFF !important;
+}
+/* Exception for primary button text */
+button[kind="primary"] * {
+    color: #FFFFFF !important;
+}
+
+/* Story Output Text */
+.story-output-text {
+    font-size: 17px;
+    line-height: 1.7;
+    max-height: 500px;
+    overflow-y: auto;
+    font-family: 'Inter', serif;
+    padding: 10px;
+    color: var(--text-primary) !important;
+}
