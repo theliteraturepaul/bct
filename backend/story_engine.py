@@ -35,6 +35,8 @@ def generate_story(user_prompt: str, genre: str, length: str) -> str:
         return response.text
         
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         if isinstance(e, StoryGenerationError):
             raise
         error_msg = str(e).lower()
